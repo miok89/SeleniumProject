@@ -26,8 +26,9 @@ public class MyWishListPage {
 	}
 
 	// i[@class="icon-remove"]
-	public WebElement getDeleteWishListBtn() {
-		return driver.findElement(By.className("icon-remove"));
+	//*[@id="wishlist_29923"]/td[6]/a/i
+	public List<WebElement> getDeleteWishListBtn() {
+		return driver.findElements(By.xpath("//table[@class=\"table table-bordered\"]/tbody/tr[contains(@id ,'wishlist')]/td[6]/a/i"));
 	}
 
 	// (//a[@href=\"javascript:;\"])[redniBr]
@@ -41,8 +42,12 @@ public class MyWishListPage {
 		return driver.findElements(By.xpath("//table[@class=\"table table-bordered\"]/tbody/tr[contains(@id ,'wishlist')]"));
 	}
 
-	public void navigateToDeleteWishListBtn() {
-		getDeleteWishListBtn().click();
+	public void navigateToDeleteWishListBtn() throws InterruptedException {
+		
+		for (int i = 0; i < getDeleteWishListBtn().size(); i++) {
+			getDeleteWishListBtn().get(i).click();
+			driver.switchTo().alert().accept();
+		}
 	}
 
 	public void navigateToSaveWishListBtn() {
