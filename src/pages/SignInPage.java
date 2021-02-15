@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 
 public class SignInPage {
 	WebDriver driver;
+	WebElement emailAddressLabel;
+	WebElement passwordLabel;
+	WebElement signInButton;
+	WebElement errorMessageBox;
 
 	public SignInPage(WebDriver driver) {
 		super();
@@ -28,6 +32,10 @@ public class SignInPage {
 		return driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/p"));
 	}
 	
+	public void navigateToSignInButton() {
+		getSignInButton().click();
+	}
+	
 	public void logIn(String username, String password) throws InterruptedException {
 		this.getEmailAddressLabel().clear();
 		this.getEmailAddressLabel().sendKeys(username);
@@ -35,6 +43,6 @@ public class SignInPage {
 		this.getPasswordLabel().clear();
 		this.getPasswordLabel().sendKeys(password);
 		Thread.sleep(1000);
-		this.getSignInButton().click();
+		this.navigateToSignInButton();
 	}
 }

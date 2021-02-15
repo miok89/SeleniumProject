@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 
 public class MyStoreHomePage {
 	WebDriver driver;
+	WebElement signInTab;
+	WebElement signOutButton;
 	
 	public MyStoreHomePage(WebDriver driver) {
 		super();
@@ -15,7 +17,6 @@ public class MyStoreHomePage {
 	public WebElement getSignInTab() {
 		return driver.findElement(By.className("login"));
 	}
-	
 	
 	public WebElement getSignOutButton() {
 		return driver.findElement(By.className("logout"));
